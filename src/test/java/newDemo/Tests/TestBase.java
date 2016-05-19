@@ -1,4 +1,4 @@
-package newDemo.pages;
+package newDemo.Tests;
 
 import newDemo.util.Browser;
 import newDemo.util.PropertyLoader;
