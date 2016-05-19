@@ -44,6 +44,13 @@
 
         <dependency>
             <groupId>info.cukes</groupId>
+            <artifactId>cucumber-jvm</artifactId>
+            <version>${cucumber.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
