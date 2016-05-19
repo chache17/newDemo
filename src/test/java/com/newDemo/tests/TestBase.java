@@ -1,4 +1,4 @@
-package newDemo.Tests;
+package com.newDemo.tests;
 
 import newDemo.util.Browser;
 import newDemo.util.PropertyLoader;
@@ -32,7 +32,7 @@ public class TestBase {
 
 	protected Browser browser;
 
-	@Before
+	@BeforeClass
 	public void init() {
 		websiteUrl = PropertyLoader.loadProperty("site.url");
 		gridHubUrl = PropertyLoader.loadProperty("grid2.hub");

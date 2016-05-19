@@ -1,4 +1,4 @@
-package newDemo.Tests;
+package com.newDemo.tests;
 
 import newDemo.pages.storeTQAHomePage;
 import org.junit.Assert;
