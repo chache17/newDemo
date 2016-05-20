@@ -1,4 +1,4 @@
-package newDemo.util;
+package com.newDemo.util;
 
 /**
  * Created by mike on 1/31/16.

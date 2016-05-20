@@ -1,6 +1,6 @@
-package newDemo.pages;
+package com.newDemo.pages;
 
-import newDemo.util.PropertyLoader;
+import com.newDemo.util.PropertyLoader;
 import org.openqa.selenium.WebDriver;
 
 /**

@@ -1,4 +1,4 @@
-package newDemo.util;
+package com.newDemo.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,8 +14,6 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import newDemo.util.Browser;
 
 /**
  * Created by mike on 1/31/16.

@@ -1,4 +1,4 @@
-package newDemo.util;
+package com.newDemo.util;
 
 import java.io.IOException;
 import java.util.Properties;
