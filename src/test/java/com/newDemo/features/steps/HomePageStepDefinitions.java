@@ -6,6 +6,7 @@ package com.newDemo.features.steps;
 
 import com.newDemo.tests.TestBase;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,13 +20,13 @@ public class HomePageStepDefinitions extends TestBase{
 
     storeTQAHomePage storeHomePage;
 
-    public HomePageStepDefinitions(){
-        init();
-        storeHomePage = PageFactory.initElements(webDriver, storeTQAHomePage.class);
+    @After
+    public void AfterScenario(){
+        webDriver.close();
     }
 
-    @Before
-    public void startUp() {
+    public HomePageStepDefinitions(){
+        init();
         storeHomePage = PageFactory.initElements(webDriver, storeTQAHomePage.class);
     }
 
