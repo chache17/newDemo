@@ -26,13 +26,13 @@ public class TestBase {
 
 	protected static WebDriver webDriver;
 
-	protected String gridHubUrl;
+	protected static String gridHubUrl;
 
-	protected String websiteUrl;
+	protected static String websiteUrl;
 
-	protected Browser browser;
+	protected static Browser browser;
 
-	@BeforeClass
+	@Before
 	public void init() {
 		websiteUrl = PropertyLoader.loadProperty("site.url");
 		gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
