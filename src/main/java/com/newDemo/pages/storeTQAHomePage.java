@@ -1,13 +1,21 @@
 package com.newDemo.pages;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class storeTQAHomePage extends Page{
-    private int timeout = 15;
 
     @FindBy(css = "a.selected")
     @CacheLookup
@@ -175,7 +183,7 @@ public class storeTQAHomePage extends Page{
 
     @FindBy(name = "s")
     @CacheLookup
-    private WebElement splashingPixelsWordpressEcommerceThemesOffer;
+    private WebElement search;
 
     @FindBy(css = "#menu-item-55 a")
     @CacheLookup
@@ -391,7 +399,7 @@ public class storeTQAHomePage extends Page{
     }
 
     public storeTQAHomePage setSplashingPixelsWordpressEcommerceThemesOfferTextField(String splashingPixelsWordpressEcommerceThemesOfferValue) {
-        splashingPixelsWordpressEcommerceThemesOffer.sendKeys(splashingPixelsWordpressEcommerceThemesOfferValue);
+        search.sendKeys(splashingPixelsWordpressEcommerceThemesOfferValue);
         return this;
     }
 
@@ -411,5 +419,45 @@ public class storeTQAHomePage extends Page{
             }
         });
         return this;
+    }
+
+    public boolean footerblogTitle(String s) {
+        return(driver.findElement(By.className("footer_blog")).getText().equals(s));
+    }
+
+    public boolean wireframeBrowse() throws InterruptedException {
+        try {
+            clickProductCategoryLink();
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("entry-title"))));
+            clickAllProductLink();
+            driver.findElement(By.linkText("Grid")).click();
+            driver.findElement(By.linkText("Default")).click();
+            clickAccountmyAccountLink();
+            clickHomeLink();
+            for(int i =0 ;i< 2;i++){
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("Product Category"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("Accessories"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("iMacs"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("iPads"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("iPhones"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("iPods"))).perform();
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("MacBooks"))).perform();
+            }
+
+            search.sendKeys("iphone"+ Keys.ENTER);
+            String[] clasList = new String[] {"grid_product_info","grid_more_info"};
+            List<String> clist = Arrays.asList(clasList);
+            for(String clasName:clist ) {
+                List<WebElement> prodInfo = driver.findElements(By.xpath("//div[@class='" + clasName + "']"));
+                for (WebElement element : prodInfo) {
+                    new Actions(driver).moveToElement(element).perform();
+                }
+            }
+
+            return true;
+        }catch (Exception e){
+            System.out.println(e.toString());
+            return false;
+        }
     }
 }
