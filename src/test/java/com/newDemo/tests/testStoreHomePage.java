@@ -1,6 +1,6 @@
 package com.newDemo.tests;
 
-import newDemo.pages.storeTQAHomePage;
+import com.newDemo.pages.storeTQAHomePage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
