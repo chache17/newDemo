@@ -1,8 +1,8 @@
 package com.newDemo.tests;
 
-import newDemo.util.Browser;
-import newDemo.util.PropertyLoader;
-import newDemo.util.WebDriverFactory;
+import com.newDemo.util.Browser;
+import com.newDemo.util.PropertyLoader;
+import com.newDemo.util.WebDriverFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
 import org.junit.rules.TestRule;
