@@ -36,4 +36,19 @@ public class testStoreHomePage extends TestBase {
 	public  void testWireFrameBrowsing() throws Exception{
 		Assert.assertTrue(storeHomePage.wireframeBrowse());
 	}
+
+	@Test
+	public void testNoResultMessage() throws Exception{
+		Assert.assertFalse(storeHomePage.search("noposibleresult"));
+	}
+
+	@Test
+	public void testSearchResult() throws Exception{
+		Assert.assertTrue(storeHomePage.search("iphone"));
+	}
+
+	@Test
+	public void testRegisterNegative() throws Exception{
+		Assert.assertFalse(storeHomePage.register());
+	}
 }

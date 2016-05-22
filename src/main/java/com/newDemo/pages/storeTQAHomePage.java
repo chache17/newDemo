@@ -1,11 +1,11 @@
 package com.newDemo.pages;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import com.newDemo.util.PropertyLoader;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -425,6 +425,10 @@ public class storeTQAHomePage extends Page{
         return(driver.findElement(By.className("footer_blog")).getText().equals(s));
     }
 
+    public boolean search(String s){
+        return searchForElement(new String[]{s},false);
+    }
+
     public boolean wireframeBrowse() throws InterruptedException {
         try {
             clickProductCategoryLink();
@@ -444,20 +448,54 @@ public class storeTQAHomePage extends Page{
             new Actions(driver).moveToElement(driver.findElement(By.linkText("MacBooks"))).perform();
             }
 
-            search.sendKeys("iphone"+ Keys.ENTER);
-            String[] clasList = new String[] {"grid_product_info","grid_more_info"};
-            List<String> clist = Arrays.asList(clasList);
-            for(String clasName:clist ) {
-                List<WebElement> prodInfo = driver.findElements(By.xpath("//div[@class='" + clasName + "']"));
-                for (WebElement element : prodInfo) {
-                    new Actions(driver).moveToElement(element).perform();
-                }
-            }
-
+            String[] prodList = new String[] {"iphone","ipad","MacBook","iMac","ipod"};
+            searchForElement(prodList,true);
             return true;
         }catch (Exception e){
             System.out.println(e.toString());
             return false;
         }
+    }
+
+    public boolean searchForElement(String[] prodList, boolean cycleResults) {
+        List<String> plist = Arrays.asList(prodList);
+        for(String product:plist) {
+            driver.findElement(By.name("s")).sendKeys(product + Keys.ENTER);
+            try{
+                WebElement results = driver.findElement(By.xpath("//div[@id='grid_view_products_page_container']"));
+                if(cycleResults){
+                    iterateResults();
+                }
+                return true;
+            }catch (NoSuchElementException e){
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void iterateResults() {
+        String[] clasList = new String[]{"grid_product_info", "grid_more_info"};
+        List<String> clist = Arrays.asList(clasList);
+        for (String clasName : clist) {
+            List<WebElement> prodInfo = driver.findElements(By.xpath("//div[@class='" + clasName + "']"));
+            if(prodInfo.size()>0) {
+                for (WebElement element : prodInfo) {
+                    new Actions(driver).moveToElement(element).perform();
+                }
+            }
+        }
+    }
+
+    public boolean register() {
+        storeTQAMyAccountPage myAccountPage = new storeTQAMyAccountPage(driver);
+        myAccountPage = PageFactory.initElements(driver,storeTQAMyAccountPage.class);
+
+        clickAccountmyAccountLink();
+        myAccountPage.fillRegisterForm(PropertyLoader.loadProperty("user.username"),
+                                        PropertyLoader.loadProperty("user.useremail"),
+                                        PropertyLoader.loadProperty("user.captcha"));
+
+        return true;
     }
 }

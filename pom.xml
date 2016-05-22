@@ -133,7 +133,9 @@
             <properties>
                 <env>local</env>
                 <user.username>TXUser001</user.username>
+                <user.useremail>TXUser001</user.useremail>
                 <user.password>TXUser.Pwd001</user.password>
+                <user.captcha>TXUser.Pwd001</user.captcha>
                 <grid2.hub></grid2.hub>
                 <site.url>http://store.demoqa.com/</site.url>
                 <browser.name>firefox</browser.name>
