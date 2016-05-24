@@ -29,7 +29,7 @@ public class testStoreHomePage extends TestBase {
 
 	@Test
 	public void testWireframeFooterSection() throws Exception{
-		Assert.assertTrue((storeHomePage.footerblogTitle("Latest Blog Post:")));
+		Assert.assertTrue(storeHomePage.footerblogTitle("Latest Blog Post:"));
 	}
 
 	@Test
