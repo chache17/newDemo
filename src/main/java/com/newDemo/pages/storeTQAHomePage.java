@@ -498,4 +498,20 @@ public class storeTQAHomePage extends Page{
 
         return true;
     }
+
+    public boolean productPageNotEmpty() {
+        if((driver.findElement(By.id("grid_view_products_page_container"))).findElements(By.xpath("//div[ contains(@class,'product_grid_item')]")).size() > 0 )
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void clickLink(String arg1) {
+        driver.findElement(By.id("grid_view_products_page_container")).findElement(By.linkText(arg1)).click();
+    }
+
+    public boolean existsDetailsPageFor(String arg1) {
+        return(driver.findElement(By.id("content_container")).getText().contains(arg1));
+    }
 }
