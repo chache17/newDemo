@@ -426,7 +426,13 @@ public class storeTQAHomePage extends Page{
     }
 
     public boolean search(String s){
-        return searchForElement(new String[]{s},false);
+        boolean status = true;
+
+        if(!s.equals("")){
+            status = searchForElement(new String[]{s},false);
+        }
+
+        return status;
     }
 
     public boolean wireframeBrowse() throws InterruptedException {
@@ -460,7 +466,10 @@ public class storeTQAHomePage extends Page{
     public boolean searchForElement(String[] prodList, boolean cycleResults) {
         List<String> plist = Arrays.asList(prodList);
         for(String product:plist) {
-            driver.findElement(By.name("s")).sendKeys(product + Keys.ENTER);
+            wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.name("s"))));
+            WebElement searchBox = driver.findElement(By.name("s"));
+            new Actions(driver).click(searchBox).sendKeys(searchBox,product+Keys.ENTER).perform();
+            //searchBox.sendKeys(product+Keys.ENTER);
             try{
                 WebElement results = driver.findElement(By.xpath("//div[@id='grid_view_products_page_container']"));
                 if(cycleResults){
@@ -500,11 +509,14 @@ public class storeTQAHomePage extends Page{
     }
 
     public boolean productPageNotEmpty() {
-        if((driver.findElement(By.id("grid_view_products_page_container"))).findElements(By.xpath("//div[ contains(@class,'product_grid_item')]")).size() > 0 )
+        boolean status = false;
+
+        if((driver.findElement(By.id("grid_view_products_page_container"))).
+                findElements(By.xpath("//div[ contains(@class,'product_grid_item')]")).size() > 0 )
         {
-            return true;
+            status = true;
         }
-        return false;
+        return status;
     }
 
     public void clickLink(String arg1) {
