@@ -150,6 +150,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
@@ -163,7 +164,7 @@
                         </goals>
                         <configuration>
                             <projectName>${project.name}</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
+                            <outputDirectory>${project.build.directory}/cucumber</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
                             <parallelTesting>false</parallelTesting>
                         </configuration>
