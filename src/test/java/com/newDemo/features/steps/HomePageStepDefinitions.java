@@ -103,4 +103,28 @@ public class HomePageStepDefinitions extends TestBase{
         // E,K,V must be a scalar (String, Integer, Date, enum etc)
         Assert.assertTrue(storeHomePage.validateDropDown(arg1));
     }
+
+    @Then("^I Should see \"([^\"]*)\"iPod Nano Blue\"([^\"]*)\" message PopUp$")
+    public void i_Should_see_iPod_Nano_Blue_message_PopUp(String arg1, String arg2) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I should Click on \"([^\"]*)\" button$")
+    public void i_should_Click_on_button(String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^I Should see checkout page$")
+    public void i_Should_see_checkout_page() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^shop resume with Sub-Total$")
+    public void shop_resume_with_Sub_Total() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
