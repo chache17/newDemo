@@ -1,21 +1,24 @@
 Feature: ToolsQA store demo feature
 
+@login
 Scenario: My Account test
     Given I'm in the ToolsQA Home Page
      When I click on  "My Account" link
      Then I should see "Your Account" tittled form page
 
+@search
 Scenario: Search Item
     Given I'm in the ToolsQA Home Page
      When I type in "Iphone" in the Search Box
       And I press Enter Key
      Then I Should see the result page
 
+@filter
 Scenario: Select item from results
     Given Im in the results page for "iphone"
      When I select "iPhone 5"
      Then I should see the "iPhone 5" product detail page
-
+@filter
 Scenario: Click Product category Item
     Given I'm in the ToolsQA Home Page
      When I hover on the Product category Button
