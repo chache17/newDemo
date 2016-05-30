@@ -17,6 +17,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePageStepDefinitions extends TestBase{
 
     storeTQAHomePage storeHomePage;
@@ -48,8 +50,7 @@ public class HomePageStepDefinitions extends TestBase{
 
     @Given("^Im in the ToolsQA Home Page$")
     public void im_in_the_ToolsQA_Home_Page() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.getTitle().equals("ONLINE STORE | Toolsqa Dummy Test site"));
     }
 
     @When("^I type in \"([^\"]*)\" in the Search Box$")
@@ -91,16 +92,15 @@ public class HomePageStepDefinitions extends TestBase{
 
     @When("^I hover on the Product category Button$")
     public void i_hover_on_the_Product_category_Button() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.hoverProductCategoryButton());
     }
 
     @Then("^I should see a dropdown menu with the next categories$")
-    public void i_should_see_a_dropdown_menu_with_the_next_categories(DataTable arg1) throws Throwable {
+    public void i_should_see_a_dropdown_menu_with_the_next_categories(List<String> arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         // For automatic transformation, change DataTable to one of
         // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
         // E,K,V must be a scalar (String, Integer, Date, enum etc)
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.validateDropDown(arg1));
     }
 }

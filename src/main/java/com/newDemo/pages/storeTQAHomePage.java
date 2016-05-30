@@ -526,4 +526,35 @@ public class storeTQAHomePage extends Page{
     public boolean existsDetailsPageFor(String arg1) {
         return(driver.findElement(By.id("content_container")).getText().contains(arg1));
     }
+
+    public boolean hoverProductCategoryButton() {
+        try {
+            clickProductCategoryLink();
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("entry-title"))));
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("Product Category"))).perform();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean validateDropDown(List<String> arg1) {
+        try {
+            new Actions(driver).moveToElement(driver.findElement(By.linkText("Product Category"))).perform();
+            int pos=0;
+            for(String menuElement:arg1){
+                if(pos==0){
+                    pos++;
+                    continue;
+                }
+
+                new Actions(driver).moveToElement(driver.findElement(By.linkText(menuElement))).perform();
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
+
+
