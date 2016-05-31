@@ -3,6 +3,7 @@ package com.newDemo.tests;
 import com.newDemo.util.Browser;
 import com.newDemo.util.PropertyLoader;
 import com.newDemo.util.WebDriverFactory;
+import cucumber.api.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.junit.*;
 import org.junit.rules.TestRule;
@@ -31,6 +32,19 @@ public class TestBase {
 	protected static String websiteUrl;
 
 	protected static Browser browser;
+
+	public void takeScreenShoot(Scenario d) {
+		System.out.println("Test Failed: " +d.getName());
+		System.out.println("Creating screenshot...");
+
+		String filename = d.getName() + SCREENSHOT_FORMAT;
+		File screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(screenshot, new File(SCREENSHOT_FOLDER + File.separator + "result" + File.separator + filename));
+		} catch (IOException ioe) {
+			System.out.println("Error copying screenshot after exception. " + ioe);
+		}
+	}
 
 	@Before
 	public void init() {

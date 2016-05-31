@@ -3,7 +3,7 @@ Feature: ToolsQA store demo feature
 @login @regression @smoke
 Scenario: My Account test
     Given I'm in the ToolsQA Home Page
-     When I click on  "My Account" link
+     When I click on "My Account" link
      Then I should see "Your Account" tittled form page
 
 @search @regression @smoke
@@ -36,8 +36,8 @@ Scenario: Click Product category Item
 Scenario: Add to Cart
     Given I'm in the ToolsQA Home Page
      When I click on "Buy Now" link
-      And I click on "Add to Cart" link
-     Then I Should see "You just added "iPod Nano Blue" to your cart." message PopUp
+      And I click on "Add To Cart" button
+     Then I Should see "You just added " whatever product " to your cart." message PopUp
       And I should Click on "Go to Checkout" button
 
 @regression @wip

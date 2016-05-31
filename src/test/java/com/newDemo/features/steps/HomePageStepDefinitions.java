@@ -8,7 +8,9 @@ import com.newDemo.pages.storeTQAHomePage;
 import com.newDemo.tests.TestBase;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,8 +26,13 @@ public class HomePageStepDefinitions extends TestBase{
     storeTQAHomePage storeHomePage;
 
     @After
-    public void AfterScenario(){
-        webDriver.close();
+    public void AfterScenario(Scenario scenario){
+        try{
+               takeScreenShoot(scenario);
+        }
+        finally {
+            webDriver.close();
+        }
     }
 
     public HomePageStepDefinitions(){
@@ -38,7 +45,7 @@ public class HomePageStepDefinitions extends TestBase{
         webDriver.get(websiteUrl);
     }
 
-    @When("^I click on  \"([^\"]*)\" link$")
+    @When("^I click on \"([^\"]*)\" link$")
     public void i_click_on_link(String arg1) throws Throwable {
         storeHomePage.clickAccountmyAccountLink();
     }
@@ -104,16 +111,20 @@ public class HomePageStepDefinitions extends TestBase{
         Assert.assertTrue(storeHomePage.validateDropDown(arg1));
     }
 
-    @Then("^I Should see \"([^\"]*)\"iPod Nano Blue\"([^\"]*)\" message PopUp$")
+    @Then("^I Should see \"([^\"]*)\" whatever product \"([^\"]*)\" message PopUp$")
     public void i_Should_see_iPod_Nano_Blue_message_PopUp(String arg1, String arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.containsText(arg1));
+        Assert.assertTrue(storeHomePage.containsText(arg2));
+    }
+
+    @When("^I click on \"(.*)\" button$")
+    public void i_click_on_button(String arg1) throws Throwable {
+        Assert.assertTrue(storeHomePage.clickOnButton(arg1));
     }
 
     @Then("^I should Click on \"([^\"]*)\" button$")
     public void i_should_Click_on_button(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.clickButton(arg1));
     }
 
     @Then("^I Should see checkout page$")
