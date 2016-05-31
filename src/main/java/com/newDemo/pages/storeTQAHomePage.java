@@ -555,6 +555,35 @@ public class storeTQAHomePage extends Page{
             return false;
         }
     }
+
+    public boolean containsText(String arg1) {
+        try{
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("fancy_notification_content"))));
+            return driver.findElement(By.id("fancy_notification_content")).getText().contains(arg1);
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean clickButton(String arg1) {
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(By.linkText(arg1)));
+            driver.findElement(By.linkText(arg1)).click();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean clickOnButton(String arg1) {
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//input[@value='" +arg1 +"']"))));
+            driver.findElement(By.xpath("//input[@value='" +arg1 +"']")).click();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }
 
 
