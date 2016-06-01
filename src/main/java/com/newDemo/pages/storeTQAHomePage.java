@@ -558,7 +558,7 @@ public class storeTQAHomePage extends Page{
 
     public boolean containsText(String arg1) {
         try{
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("fancy_notification_content"))));
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@id='fancy_notification_content']/span"))));
             return driver.findElement(By.id("fancy_notification_content")).getText().contains(arg1);
         }catch (Exception e){
             return false;
@@ -581,6 +581,17 @@ public class storeTQAHomePage extends Page{
             driver.findElement(By.xpath("//input[@value='" +arg1 +"']")).click();
             return true;
         }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean clickLinkWithText(String arg1) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText(arg1))));
+            driver.findElement(By.linkText(arg1)).click();
+            return true;
+        }
+        catch (Exception e){
             return false;
         }
     }

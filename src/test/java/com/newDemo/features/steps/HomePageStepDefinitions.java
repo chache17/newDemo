@@ -6,17 +6,14 @@ package com.newDemo.features.steps;
 
 import com.newDemo.pages.storeTQAHomePage;
 import com.newDemo.tests.TestBase;
-import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -47,7 +44,7 @@ public class HomePageStepDefinitions extends TestBase{
 
     @When("^I click on \"([^\"]*)\" link$")
     public void i_click_on_link(String arg1) throws Throwable {
-        storeHomePage.clickAccountmyAccountLink();
+        storeHomePage.clickLinkWithText(arg1);
     }
 
     @Then("^I should see \"([^\"]*)\" tittled form page$")
