@@ -47,9 +47,14 @@ public class HomePageStepDefinitions extends TestBase{
         storeHomePage.clickLinkWithText(arg1);
     }
 
+    @When("^I click \"([^\"]*)\" link$")
+    public void i_click_link(String arg1) throws Throwable {
+        storeHomePage.clickLinkText(arg1);
+    }
+
     @Then("^I should see \"([^\"]*)\" tittled form page$")
     public void i_should_see_tittled_form_page(String arg1) throws Throwable {
-        Assert.assertTrue(webDriver.findElement(By.className("entry-title")).getText().equals(arg1));
+        Assert.assertTrue(storeHomePage.comparePageTitle(arg1));
     }
 
     @Given("^Im in the ToolsQA Home Page$")

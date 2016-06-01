@@ -9,7 +9,7 @@ Scenario: My Account test
 @search @regression @smoke
 Scenario: Search Item
     Given I'm in the ToolsQA Home Page
-     When I type in "Iphone" in the Search Box
+     When I type in "iphone" in the Search Box
       And I press Enter Key
      Then I Should see the result page
 
@@ -35,7 +35,7 @@ Scenario: Click Product category Item
 @regression @wip
 Scenario: Add to Cart
     Given I'm in the ToolsQA Home Page
-     When I click on "Buy Now" link
+     When I click "Buy Now" link
       And I click on "Add To Cart" button
      Then I Should see "You just added " whatever product " to your cart." message PopUp
       And I should Click on "Go to Checkout" button

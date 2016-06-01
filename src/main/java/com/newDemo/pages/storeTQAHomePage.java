@@ -577,7 +577,7 @@ public class storeTQAHomePage extends Page{
 
     public boolean clickOnButton(String arg1) {
         try{
-            wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//input[@value='" +arg1 +"']"))));
+            wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.className("input-button-buy"))));
             driver.findElement(By.xpath("//input[@value='" +arg1 +"']")).click();
             return true;
         }catch (Exception e){
@@ -586,6 +586,17 @@ public class storeTQAHomePage extends Page{
     }
 
     public boolean clickLinkWithText(String arg1) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(text(),'" + arg1 + "')]"))));
+            driver.findElement(By.xpath("//a[contains(text(),'" + arg1 + "')]")).click();
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean clickLinkText(String arg1) {
         try {
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText(arg1))));
             driver.findElement(By.linkText(arg1)).click();
@@ -600,6 +611,15 @@ public class storeTQAHomePage extends Page{
         try{
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("entry-title"))));
             return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean comparePageTitle(String arg1) {
+        try{
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("entry-title"))));
+            return (driver.findElement(By.className("entry-title")).getText().equals(arg1));
         }catch (Exception e){
             return false;
         }
