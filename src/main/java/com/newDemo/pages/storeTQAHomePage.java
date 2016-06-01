@@ -595,6 +595,15 @@ public class storeTQAHomePage extends Page{
             return false;
         }
     }
+
+    public boolean isCheckOutPage() {
+        try{
+            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("entry-title"))));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }
 
 

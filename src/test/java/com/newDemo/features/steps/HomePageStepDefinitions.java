@@ -126,13 +126,11 @@ public class HomePageStepDefinitions extends TestBase{
 
     @Then("^I Should see checkout page$")
     public void i_Should_see_checkout_page() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(storeHomePage.isCheckOutPage());
     }
 
     @Then("^shop resume with Sub-Total$")
     public void shop_resume_with_Sub_Total() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.fail("Error assertion failed");
     }
 }
