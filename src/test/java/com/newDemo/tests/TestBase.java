@@ -33,16 +33,15 @@ public class TestBase {
 
 	protected static Browser browser;
 
-	public void takeScreenShoot(Scenario d) {
-		System.out.println("Test Failed: " +d.getName());
-		System.out.println("Creating screenshot...");
-
-		String filename = d.getName() + SCREENSHOT_FORMAT;
-		File screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+	public void takeScreenShoot(Scenario scenario) {
 		try {
-			FileUtils.copyFile(screenshot, new File(SCREENSHOT_FOLDER + File.separator + "result" + File.separator + filename));
-		} catch (IOException ioe) {
-			System.out.println("Error copying screenshot after exception. " + ioe);
+			if (scenario.isFailed()) {
+				final byte[] screenshot = ((TakesScreenshot) webDriver)
+						.getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			}
+		} catch (Exception e){
+			System.out.println("Error while taking screen shoot:"+ e.toString());
 		}
 	}
 
